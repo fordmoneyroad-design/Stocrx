@@ -1,2 +1,766 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>STOCR - Subscription to Own Car Rentals</title>    <link rel="stylesheet" href="styles.css">    <link rel="preconnect" href="https://fonts.googleapis.com">    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
-</head><body>    <header>        <div class="container">            <div class="header-content">                <div class="logo">                    <h1>STOCR</h1>                </div>                <nav>                    <ul>                        <li><a href="#browse">Browse Cars</a></li>                        <li><a href="#how-it-works">How It Works</a></li>                        <li><a href="#support">Support</a></li>                        <li><a href="#login" class="btn-login">My Account</a></li>                    </ul>                </nav>                <div class="language-selector">                    <select>                        <option value="en">English</option>                        <option value="es">Español</option>                        <option value="ar">العربية</option>                    </select>                </div>                <div class="mobile-menu-btn">                    <span></span>                    <span></span>                    <span></span>                </div>            </div>        </div>    </header>    <section class="hero">        <div class="container">            <div class="hero-content">                <h2>Drive Today.<br>Pay As You Go.<br>Own It Your Way.</h2>                <p>Subscribe to your dream car and build ownership with every payment.</p>                <a href="#browse" class="btn-primary">Browse Cars</a>            </div>        </div>    </section>    <section id="browse" class="car-listings">        <div class="container">            <h2 class="section-title">Featured Vehicles</h2>            <div class="car-grid">                <!-- Car 1 -->                <div class="car-card">                    <div class="car-image">                        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Toyota Camry">                    </div>                    <div class="car-details">                        <h3>2023 Toyota Camry</h3>                        <div class="price-details">                            <div class="price-item">                                <span class="label">Down Payment</span>                                <span class="value">$1,500</span>                            </div>                            <div class="price-item">                                <span class="label">Subscription</span>                                <span class="value">$399/month</span>                            </div>                        </div>                        <div class="ownership-progress">                            <div class="progress-text">                                <span>Ownership Progress</span>                                <span>$3,500 / $22,000 paid</span>                            </div>                            <div class="progress-bar">                                <div class="progress" style="width: 16%"></div>                            </div>                        </div>                        <div class="car-actions">                            <a href="#" class="btn-subscribe">Subscribe Now</a>                            <a href="#" class="btn-swap">Swap / Upgrade</a>                        </div>                    </div>                </div>                <!-- Car 2 -->                <div class="car-card">                    <div class="car-image">                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Honda CR-V">                    </div>                    <div class="car-details">                        <h3>2023 Honda CR-V</h3>                        <div class="price-details">                            <div class="price-item">                                <span class="label">Down Payment</span>                                <span class="value">$2,000</span>                            </div>                            <div class="price-item">                                <span class="label">Subscription</span>                                <span class="value">$449/month</span>                            </div>                        </div>                        <div class="ownership-progress">                            <div class="progress-text">                                <span>Ownership Progress</span>                                <span>$2,000 / $25,000 paid</span>                            </div>                            <div class="progress-bar">                                <div class="progress" style="width: 8%"></div>                            </div>                        </div>                        <div class="car-actions">                            <a href="#" class="btn-subscribe">Subscribe Now</a>                            <a href="#" class="btn-swap">Swap / Upgrade</a>                        </div>                    </div>                </div>                <!-- Car 3 -->                <div class="car-card">                    <div class="car-image">                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chevrolet Corvette">                    </div>                    <div class="car-details">                        <h3>2022 Chevrolet Corvette</h3>                        <div class="price-details">                            <div class="price-item">                                <span class="label">Down Payment</span>                                <span class="value">$5,000</span>                            </div>                            <div class="price-item">                                <span class="label">Subscription</span>                                <span class="value">$899/month</span>                            </div>                        </div>                        <div class="ownership-progress">                            <div class="progress-text">                                <span>Ownership Progress</span>                                <span>$5,000 / $65,000 paid</span>                            </div>                            <div class="progress-bar">                                <div class="progress" style="width: 7.7%"></div>                            </div>                        </div>                        <div class="car-actions">                            <a href="#" class="btn-subscribe">Subscribe Now</a>                            <a href="#" class="btn-swap">Swap / Upgrade</a>                        </div>                    </div>                </div>            </div>        </div>    </section>    <section class="calculator">        <div class="container">            <h2 class="section-title">Ownership Calculator</h2>            <div class="calculator-widget">                <div class="calculator-inputs">                    <div class="input-group">                        <label for="down-payment">Down Payment ($)</label>                        <input type="number" id="down-payment" value="2000" min="0">                    </div>                    <div class="input-group">                        <label for="contract-length">Contract Length (months)</label>                        <input type="range" id="contract-length" min="3" max="6" value="3">                        <div class="range-labels">                            <span>3 mo</span>                            <span>6 mo</span>                        </div>                    </div>                    <div class="payment-toggle">                        <button class="active">Weekly</button>                        <button>Monthly</button>                    </div>                </div>                <div class="calculator-results">                    <div class="result-item">                        <span class="label">Weekly Payment</span>                        <span class="value">$125</span>                    </div>                    <div class="result-item">                        <span class="label">Ownership Progress</span>                        <span class="value">$2,000 / $20,000</span>                    </div>                    <div class="result-item">                        <span class="label">Early Buyout Price (25% off)</span>                        <span class="value">$13,500</span>                    </div>                </div>                <button class="btn-primary full-width">Apply These Terms</button>            </div>        </div>    </section>    <section id="how-it-works" class="how-it-works">        <div class="container">            <h2 class="section-title">How It Works</h2>            <div class="steps-container">                <div class="step">                    <div class="step-number">1</div>                    <div class="step-content">                        <h3>Pick your car</h3>                        <p>Browse our inventory and find your perfect match</p>                    </div>                </div>                <div class="step">                    <div class="step-number">2</div>                    <div class="step-content">                        <h3>Pay your down payment</h3>                        <p>Secure your vehicle with an initial payment</p>                    </div>                </div>                <div class="step">                    <div class="step-number">3</div>                    <div class="step-content">                        <h3>Upload license + selfie</h3>                        <p>Quick verification with our AI approval system</p>                    </div>                </div>                <div class="step">                    <div class="step-number">4</div>                    <div class="step-content">                        <h3>Start driving the same week</h3>                        <p>Free local delivery to your doorstep</p>                    </div>                </div>                <div class="step">                    <div class="step-number">5</div>                    <div class="step-content">                        <h3>Every payment builds ownership</h3>                        <p>Watch your equity grow with each payment</p>                    </div>                </div>                <div class="step">                    <div class="step-number">6</div>                    <div class="step-content">                        <h3>Option to swap or upgrade</h3>                        <p>Transfer your equity to a different vehicle anytime</p>                    </div>                </div>            </div>        </div>    </section>    <section class="policy-highlights">        <div class="container">            <h2 class="section-title">Policy Highlights</h2>            <div class="policy-grid">                <div class="policy-item">                    <h3>Ownership Structure</h3>                    <p>No lump sum buyout required — ownership comes through subscription payments</p>                </div>                <div class="policy-item">                    <h3>Contract Terms</h3>                    <p>Flexible contracts from 3-6 months</p>                </div>                <div class="policy-item">                    <h3>Late Policy</h3>                    <p>Week 1-4 flat fees (editable per week)</p>                </div>                <div class="policy-item">                    <h3>Early Buyout</h3>                    <p>25% discount on remaining balance (editable per car)</p>                </div>                <div class="policy-item">                    <h3>Delivery</h3>                    <p>Free local delivery / paid long distance (added to payments)</p>                </div>                <div class="policy-item">                    <h3>Termination</h3>                    <p>Free pick-up, must provide release & police report</p>                </div>                <div class="policy-item">                    <h3>Insurance</h3>                    <p>Optional or mandatory (toggle per car)</p>                </div>                <div class="policy-item">                    <h3>Education</h3>                    <p>Multi-language education course available (with captions & transcripts)</p>                </div>            </div>        </div>    </section>    <section id="support" class="support">        <div class="container">            <h2 class="section-title">Support</h2>            <div class="support-options">                <div class="support-card">                    <div class="support-icon">                        <img src="https://img.icons8.com/fluency/96/000000/chatbot.png" alt="AI Chatbot">                    </div>                    <h3>AI Chatbot</h3>                    <p>24/7 instant support for common questions</p>                    <a href="#" class="btn-secondary">Chat Now</a>                </div>                <div class="support-card">                    <div class="support-icon">                        <img src="https://img.icons8.com/fluency/96/000000/email-open.png" alt="Email Support">                    </div>                    <h3>Email Support</h3>                    <p>Human support for complex inquiries</p>                    <a href="mailto:support@stocr.com" class="btn-secondary">Email Us</a>                </div>                <div class="support-card">                    <div class="support-icon">                        <img src="https://img.icons8.com/fluency/96/000000/language.png" alt="Multi-language Support">                    </div>                    <h3>Multi-language Help</h3>                    <p>Support in English, Spanish, and Arabic</p>                    <a href="#" class="btn-secondary">Learn More</a>                </div>            </div>        </div>    </section>    <footer>        <div class="container">            <div class="footer-content">                <div class="footer-logo">                    <h2>STOCR</h2>                    <p>Subscription to Own Car Rentals</p>                </div>                <div class="footer-links">                    <div class="footer-column">                        <h3>Navigation</h3>                        <ul>                            <li><a href="#browse">Browse Cars</a></li>                            <li><a href="#how-it-works">How It Works</a></li>                            <li><a href="#support">Support</a></li>                            <li><a href="#login">My Account</a></li>                        </ul>                    </div>                    <div class="footer-column">                        <h3>Legal</h3>                        <ul>                            <li><a href="#">Terms of Service</a></li>                            <li><a href="#">Privacy Policy</a></li>                            <li><a href="#">Cookie Policy</a></li>                            <li><a href="#">Accessibility</a></li>                        </ul>                    </div>                    <div class="footer-column">                        <h3>Contact</h3>                        <ul>                            <li><a href="mailto:info@stocr.com">info@stocr.com</a></li>                            <li><a href="tel:+18005551234">1-800-555-1234</a></li>                            <li><a href="#">Find a Dealership</a></li>                            <li><a href="#">Careers</a></li>                        </ul>                    </div>                </div>            </div>            <div class="footer-bottom">                <p>&copy; 2025 STOCR. All rights reserved.</p>                <div class="social-links">                    <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt="Facebook"></a>                    <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/fluency/48/000000/twitter.png" alt="Twitter"></a>                    <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram"></a>                    <a href="#" aria-label="LinkedIn"><img src="https://img.icons8.com/fluency/48/000000/linkedin.png" alt="LinkedIn"></a>                </div>            </div>        </div>    </footer>    <script src="script.js"></script></body></html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   STOCR - Subscription to Own Car Rentals
+  </title>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="css/css2" rel="stylesheet"/>
+  <script src="js/ninja-daytona-script.js">
+  </script>
+  <style>
+   .car-card, .step, .policy-item, .support-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        nav.show {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            padding: 1rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav.show ul {
+            flex-direction: column;
+            gap: 1rem;
+        }
+  </style>
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="header-content">
+     <div class="logo">
+      <h1>
+       STOCR
+      </h1>
+     </div>
+     <nav>
+      <ul>
+       <li>
+        <a href="#browse">
+         Browse Cars
+        </a>
+       </li>
+       <li>
+        <a href="#how-it-works">
+         How It Works
+        </a>
+       </li>
+       <li>
+        <a href="#support">
+         Support
+        </a>
+       </li>
+       <li>
+        <a class="btn-login" href="#login">
+         My Account
+        </a>
+       </li>
+      </ul>
+     </nav>
+     <div class="language-selector">
+      <select>
+       <option value="en">
+        English
+       </option>
+       <option value="es">
+        Español
+       </option>
+       <option value="ar">
+        العربية
+       </option>
+      </select>
+     </div>
+     <div class="mobile-menu-btn">
+      <span>
+      </span>
+      <span>
+      </span>
+      <span>
+      </span>
+     </div>
+    </div>
+   </div>
+  </header>
+  <section class="hero">
+   <div class="container">
+    <div class="hero-content">
+     <h2>
+      Drive Today.
+      <br/>
+      Pay As You Go.
+      <br/>
+      Own It Your Way.
+     </h2>
+     <p>
+      Subscribe to your dream car and build ownership with every payment.
+     </p>
+     <a class="btn-primary" href="#browse">
+      Browse Cars
+     </a>
+    </div>
+   </div>
+  </section>
+  <section class="car-listings" id="browse">
+   <div class="container">
+    <h2 class="section-title">
+     Featured Vehicles
+    </h2>
+    <div class="car-grid">
+     <!-- Car 1 -->
+     <div class="car-card fade-in">
+      <div class="car-image">
+       <img alt="Toyota Camry" src="images/photo-1533473359331-0135ef1b58bf"/>
+      </div>
+      <div class="car-details">
+       <h3>
+        2023 Toyota Camry
+       </h3>
+       <div class="price-details">
+        <div class="price-item">
+         <span class="label">
+          Down Payment
+         </span>
+         <span class="value">
+          $1,500
+         </span>
+        </div>
+        <div class="price-item">
+         <span class="label">
+          Subscription
+         </span>
+         <span class="value">
+          $399/month
+         </span>
+        </div>
+       </div>
+       <div class="ownership-progress">
+        <div class="progress-text">
+         <span>
+          Ownership Progress
+         </span>
+         <span>
+          $3,500 / $22,000 paid
+         </span>
+        </div>
+        <div class="progress-bar">
+         <div class="progress" style="width: 16%">
+         </div>
+        </div>
+       </div>
+       <div class="car-actions">
+        <a class="btn-subscribe" href="#">
+         Subscribe Now
+        </a>
+        <a class="btn-swap" href="#">
+         Swap / Upgrade
+        </a>
+       </div>
+      </div>
+     </div>
+     <!-- Car 2 -->
+     <div class="car-card fade-in">
+      <div class="car-image">
+       <img alt="Honda CR-V" src="images/photo-1580273916550-e323be2ae537"/>
+      </div>
+      <div class="car-details">
+       <h3>
+        2023 Honda CR-V
+       </h3>
+       <div class="price-details">
+        <div class="price-item">
+         <span class="label">
+          Down Payment
+         </span>
+         <span class="value">
+          $2,000
+         </span>
+        </div>
+        <div class="price-item">
+         <span class="label">
+          Subscription
+         </span>
+         <span class="value">
+          $449/month
+         </span>
+        </div>
+       </div>
+       <div class="ownership-progress">
+        <div class="progress-text">
+         <span>
+          Ownership Progress
+         </span>
+         <span>
+          $2,000 / $25,000 paid
+         </span>
+        </div>
+        <div class="progress-bar">
+         <div class="progress" style="width: 8%">
+         </div>
+        </div>
+       </div>
+       <div class="car-actions">
+        <a class="btn-subscribe" href="#">
+         Subscribe Now
+        </a>
+        <a class="btn-swap" href="#">
+         Swap / Upgrade
+        </a>
+       </div>
+      </div>
+     </div>
+     <!-- Car 3 -->
+     <div class="car-card fade-in">
+      <div class="car-image">
+       <img alt="Chevrolet Corvette" src="images/photo-1552519507-da3b142c6e3d"/>
+      </div>
+      <div class="car-details">
+       <h3>
+        2022 Chevrolet Corvette
+       </h3>
+       <div class="price-details">
+        <div class="price-item">
+         <span class="label">
+          Down Payment
+         </span>
+         <span class="value">
+          $5,000
+         </span>
+        </div>
+        <div class="price-item">
+         <span class="label">
+          Subscription
+         </span>
+         <span class="value">
+          $899/month
+         </span>
+        </div>
+       </div>
+       <div class="ownership-progress">
+        <div class="progress-text">
+         <span>
+          Ownership Progress
+         </span>
+         <span>
+          $5,000 / $65,000 paid
+         </span>
+        </div>
+        <div class="progress-bar">
+         <div class="progress" style="width: 7.7%">
+         </div>
+        </div>
+       </div>
+       <div class="car-actions">
+        <a class="btn-subscribe" href="#">
+         Subscribe Now
+        </a>
+        <a class="btn-swap" href="#">
+         Swap / Upgrade
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="calculator">
+   <div class="container">
+    <h2 class="section-title">
+     Ownership Calculator
+    </h2>
+    <div class="calculator-widget">
+     <div class="calculator-inputs">
+      <div class="input-group">
+       <label for="down-payment">
+        Down Payment ($)
+       </label>
+       <input id="down-payment" min="0" type="number" value="2000"/>
+      </div>
+      <div class="input-group">
+       <label for="contract-length">
+        Contract Length (3 months)
+       </label>
+       <input id="contract-length" max="6" min="3" type="range" value="3"/>
+       <div class="range-labels">
+        <span>
+         3 mo
+        </span>
+        <span>
+         6 mo
+        </span>
+       </div>
+      </div>
+      <div class="payment-toggle">
+       <button class="active">
+        Weekly
+       </button>
+       <button>
+        Monthly
+       </button>
+      </div>
+     </div>
+     <div class="calculator-results">
+      <div class="result-item">
+       <span class="label">
+        Weekly Payment
+       </span>
+       <span class="value">
+        $1385.68
+       </span>
+      </div>
+      <div class="result-item">
+       <span class="label">
+        Ownership Progress
+       </span>
+       <span class="value">
+        $2000.00 / $20000.00
+       </span>
+      </div>
+      <div class="result-item">
+       <span class="label">
+        Early Buyout Price (25% off)
+       </span>
+       <span class="value">
+        $13500.00
+       </span>
+      </div>
+     </div>
+     <button class="btn-primary full-width">
+      Apply These Terms
+     </button>
+    </div>
+   </div>
+  </section>
+  <section class="how-it-works" id="how-it-works">
+   <div class="container">
+    <h2 class="section-title">
+     How It Works
+    </h2>
+    <div class="steps-container">
+     <div class="step fade-in">
+      <div class="step-number">
+       1
+      </div>
+      <div class="step-content">
+       <h3>
+        Pick your car
+       </h3>
+       <p>
+        Browse our inventory and find your perfect match
+       </p>
+      </div>
+     </div>
+     <div class="step fade-in">
+      <div class="step-number">
+       2
+      </div>
+      <div class="step-content">
+       <h3>
+        Pay your down payment
+       </h3>
+       <p>
+        Secure your vehicle with an initial payment
+       </p>
+      </div>
+     </div>
+     <div class="step fade-in">
+      <div class="step-number">
+       3
+      </div>
+      <div class="step-content">
+       <h3>
+        Upload license + selfie
+       </h3>
+       <p>
+        Quick verification with our AI approval system
+       </p>
+      </div>
+     </div>
+     <div class="step fade-in">
+      <div class="step-number">
+       4
+      </div>
+      <div class="step-content">
+       <h3>
+        Start driving the same week
+       </h3>
+       <p>
+        Free local delivery to your doorstep
+       </p>
+      </div>
+     </div>
+     <div class="step fade-in">
+      <div class="step-number">
+       5
+      </div>
+      <div class="step-content">
+       <h3>
+        Every payment builds ownership
+       </h3>
+       <p>
+        Watch your equity grow with each payment
+       </p>
+      </div>
+     </div>
+     <div class="step fade-in">
+      <div class="step-number">
+       6
+      </div>
+      <div class="step-content">
+       <h3>
+        Option to swap or upgrade
+       </h3>
+       <p>
+        Transfer your equity to a different vehicle anytime
+       </p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="policy-highlights">
+   <div class="container">
+    <h2 class="section-title">
+     Policy Highlights
+    </h2>
+    <div class="policy-grid">
+     <div class="policy-item fade-in">
+      <h3>
+       Ownership Structure
+      </h3>
+      <p>
+       No lump sum buyout required — ownership comes through subscription payments
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Contract Terms
+      </h3>
+      <p>
+       Flexible contracts from 3-6 months
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Late Policy
+      </h3>
+      <p>
+       Week 1-4 flat fees (editable per week)
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Early Buyout
+      </h3>
+      <p>
+       25% discount on remaining balance (editable per car)
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Delivery
+      </h3>
+      <p>
+       Free local delivery / paid long distance (added to payments)
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Termination
+      </h3>
+      <p>
+       Free pick-up, must provide release &amp; police report
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Insurance
+      </h3>
+      <p>
+       Optional or mandatory (toggle per car)
+      </p>
+     </div>
+     <div class="policy-item fade-in">
+      <h3>
+       Education
+      </h3>
+      <p>
+       Multi-language education course available (with captions &amp; transcripts)
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="support" id="support">
+   <div class="container">
+    <h2 class="section-title">
+     Support
+    </h2>
+    <div class="support-options">
+     <div class="support-card fade-in">
+      <div class="support-icon">
+       <img alt="AI Chatbot" src="images/chatbot.png"/>
+      </div>
+      <h3>
+       AI Chatbot
+      </h3>
+      <p>
+       24/7 instant support for common questions
+      </p>
+      <a class="btn-secondary" href="#">
+       Chat Now
+      </a>
+     </div>
+     <div class="support-card fade-in">
+      <div class="support-icon">
+       <img alt="Email Support" src="images/email-open.png"/>
+      </div>
+      <h3>
+       Email Support
+      </h3>
+      <p>
+       Human support for complex inquiries
+      </p>
+      <a class="btn-secondary" href="mailto:support@stocr.com">
+       Email Us
+      </a>
+     </div>
+     <div class="support-card fade-in">
+      <div class="support-icon">
+       <img alt="Multi-language Support" src="images/language.png"/>
+      </div>
+      <h3>
+       Multi-language Help
+      </h3>
+      <p>
+       Support in English, Spanish, and Arabic
+      </p>
+      <a class="btn-secondary" href="#">
+       Learn More
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer>
+   <div class="container">
+    <div class="footer-content">
+     <div class="footer-logo">
+      <h2>
+       STOCR
+      </h2>
+      <p>
+       Subscription to Own Car Rentals
+      </p>
+     </div>
+     <div class="footer-links">
+      <div class="footer-column">
+       <h3>
+        Navigation
+       </h3>
+       <ul>
+        <li>
+         <a href="#browse">
+          Browse Cars
+         </a>
+        </li>
+        <li>
+         <a href="#how-it-works">
+          How It Works
+         </a>
+        </li>
+        <li>
+         <a href="#support">
+          Support
+         </a>
+        </li>
+        <li>
+         <a href="#login">
+          My Account
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="footer-column">
+       <h3>
+        Legal
+       </h3>
+       <ul>
+        <li>
+         <a href="#">
+          Terms of Service
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Cookie Policy
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Accessibility
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div class="footer-column">
+       <h3>
+        Contact
+       </h3>
+       <ul>
+        <li>
+         <a href="mailto:info@stocr.com">
+          info@stocr.com
+         </a>
+        </li>
+        <li>
+         <a href="tel:+18005551234">
+          1-800-555-1234
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Find a Dealership
+         </a>
+        </li>
+        <li>
+         <a href="#">
+          Careers
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>
+      © 2025 STOCR. All rights reserved.
+     </p>
+     <div class="social-links">
+      <a aria-label="Facebook" href="#">
+       <img alt="Facebook" src="images/facebook-new.png"/>
+      </a>
+      <a aria-label="Twitter" href="#">
+       <img alt="Twitter" src="images/twitter.png"/>
+      </a>
+      <a aria-label="Instagram" href="#">
+       <img alt="Instagram" src="images/instagram-new.png"/>
+      </a>
+      <a aria-label="LinkedIn" href="#">
+       <img alt="LinkedIn" src="images/linkedin.png"/>
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="js/script.js">
+  </script>
+  <div>
+   <style>
+    .ninja-badge {
+        all: initial;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        animation: ninja-badge-float 3s ease-in-out infinite;
+    }
+    
+    .ninja-badge a {
+        all: initial;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        padding: 12px 16px;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+    }
+    
+    .ninja-badge-emoji {
+        all: initial;
+        font-size: 18px;
+    }
+
+    .ninja-badge-text {
+        all: initial;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: Overpass, Trebuchet MS, sans-serif;
+    }
+    
+    .ninja-badge-close {
+        all: initial;
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        width: 20px;
+        height: 20px;
+        background: #ff4757;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: Overpass, Trebuchet MS, sans-serif;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: bold;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+        z-index: 1001;
+    }
+    
+    .ninja-badge-close:hover {
+        background: #ff3742;
+        transform: scale(1.1);
+    }
+    
+    @keyframes ninja-badge-float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+   </style>
+   <div class="ninja-badge" id="ninja-badge">
+    <a href="https://www.ninjatech.ai/product/super-ninja" target="_blank">
+     <span class="ninja-badge-emoji">
+      🥷
+     </span>
+     <span class="ninja-badge-text">
+      Made by SuperNinja
+     </span>
+    </a>
+    <button class="ninja-badge-close" onclick="document.getElementById('ninja-badge').remove()" title="Close">
+     ×
+    </button>
+   </div>
+  </div>
+ </body>
+</html>
