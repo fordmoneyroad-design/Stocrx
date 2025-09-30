@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STOCRX - Subscription to Own Car Rentals</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/stocrx-favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/stocrx-favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicons/stocrx-favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="favicons/stocrx-favicon-512x512.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,282 +15,259 @@
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-    <!-- Notification Toast -->
-    <div id="notification-toast" class="notification-toast">
-        <div class="notification-content">
-            <span class="notification-icon">🚗</span>
-            <div class="notification-text">
-                <strong>New Vehicle Posted!</strong>
-                <p id="notification-message"></p>
+    <!-- Animated Car Notification -->
+    <div id="car-notification" class="car-notification">
+        <div class="car-container">
+            <div class="car">🚗</div>
+            <div class="smoke-trail">
+                <span class="smoke"></span>
+                <span class="smoke"></span>
+                <span class="smoke"></span>
             </div>
-            <button class="notification-close">&times;</button>
         </div>
+        <div class="notification-message">New cars on the way!</div>
     </div>
 
-    <header>
+    <!-- Header with Dropdown Menu -->
+    <header class="main-header">
         <div class="container">
-            <div class="header-content">
+            <div class="header-wrapper">
+                <!-- Logo -->
                 <div class="logo">
-                    <h1>STOCRX</h1>
+                    <a href="index.html">
+                        <h1>STOCRX</h1>
+                    </a>
                 </div>
-                <nav>
-                    <ul>
-                        <li><a href="#browse">Browse Cars</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#support">Support</a></li>
-                        <li><a href="#login" class="btn-login">My Account</a></li>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul class="nav-menu">
+                        <!-- Cars Dropdown -->
+                        <li class="nav-item has-dropdown">
+                            <a href="#" class="nav-link">Cars <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="browse-cars.html">Browse Cars</a></li>
+                                <li><a href="compare-cars.html">Compare Cars</a></li>
+                                <li><a href="car-finder.html">Car Finder (AI)</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Plans Dropdown -->
+                        <li class="nav-item has-dropdown">
+                            <a href="#" class="nav-link">Plans <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="pricing.html">Pricing & Options</a></li>
+                                <li><a href="how-it-works.html">How It Works</a></li>
+                                <li><a href="calculator.html">Rent-to-Own Calculator</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Account Dropdown -->
+                        <li class="nav-item has-dropdown">
+                            <a href="#" class="nav-link">Account <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="apply.html">Apply Now</a></li>
+                                <li><a href="login.html">My Account</a></li>
+                                <li><a href="payment.html">Make a Payment</a></li>
+                                <li><a href="progress.html">Ownership Progress</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Support Dropdown -->
+                        <li class="nav-item has-dropdown">
+                            <a href="#" class="nav-link">Support <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="faq.html">FAQs</a></li>
+                                <li><a href="chat.html">Live Chat / AI Assistant</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
+
+                <!-- Language Selector -->
                 <div class="language-selector">
-                    <select>
+                    <select id="language-select">
                         <option value="en">English</option>
                         <option value="es">Español</option>
                         <option value="ar">العربية</option>
                     </select>
                 </div>
-                <div class="mobile-menu-btn">
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+            <h2>Menu</h2>
+            <button class="mobile-nav-close" id="mobile-nav-close">&times;</button>
+        </div>
+        <ul class="mobile-nav-menu">
+            <!-- Cars -->
+            <li class="mobile-nav-item">
+                <button class="mobile-nav-toggle">Cars <span>+</span></button>
+                <ul class="mobile-submenu">
+                    <li><a href="browse-cars.html">Browse Cars</a></li>
+                    <li><a href="compare-cars.html">Compare Cars</a></li>
+                    <li><a href="car-finder.html">Car Finder (AI)</a></li>
+                </ul>
+            </li>
+            <!-- Plans -->
+            <li class="mobile-nav-item">
+                <button class="mobile-nav-toggle">Plans <span>+</span></button>
+                <ul class="mobile-submenu">
+                    <li><a href="pricing.html">Pricing & Options</a></li>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="calculator.html">Rent-to-Own Calculator</a></li>
+                </ul>
+            </li>
+            <!-- Account -->
+            <li class="mobile-nav-item">
+                <button class="mobile-nav-toggle">Account <span>+</span></button>
+                <ul class="mobile-submenu">
+                    <li><a href="apply.html">Apply Now</a></li>
+                    <li><a href="login.html">My Account</a></li>
+                    <li><a href="payment.html">Make a Payment</a></li>
+                    <li><a href="progress.html">Ownership Progress</a></li>
+                </ul>
+            </li>
+            <!-- Support -->
+            <li class="mobile-nav-item">
+                <button class="mobile-nav-toggle">Support <span>+</span></button>
+                <ul class="mobile-submenu">
+                    <li><a href="faq.html">FAQs</a></li>
+                    <li><a href="chat.html">Live Chat / AI Assistant</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h2>Drive Today.<br>Pay As You Go.<br>Own It Your Way.</h2>
-                <p>Subscribe to your dream car and build ownership with every payment.</p>
-                <a href="#browse" class="btn-primary">Browse Cars</a>
+                <h2 class="hero-title">Drive Today.<br>Pay As You Go.<br>Own It Your Way.</h2>
+                <p class="hero-subtitle">Subscribe to your dream car and build ownership with every payment.</p>
+                <div class="hero-buttons">
+                    <a href="browse-cars.html" class="btn-primary btn-large">Browse Cars</a>
+                    <a href="calculator.html" class="btn-secondary btn-large">Calculate Ownership</a>
+                </div>
+                <div class="hero-features">
+                    <div class="hero-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>No Credit Check</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>$1,500 Down Payment</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span class="feature-icon">✓</span>
+                        <span>Own in 3-6 Months</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="browse" class="car-listings">
+    <!-- Featured Cars Section -->
+    <section id="browse" class="featured-cars">
         <div class="container">
             <h2 class="section-title">Featured Vehicles</h2>
-            <div class="car-grid" id="car-grid">
-                <!-- Cars will be dynamically loaded here -->
+            <div class="cars-grid" id="cars-grid">
+                <!-- Cars will be loaded dynamically -->
+            </div>
+            <div class="view-all-btn">
+                <a href="browse-cars.html" class="btn-secondary">View All Cars</a>
             </div>
         </div>
     </section>
 
-    <section class="calculator">
+    <!-- How It Works Section -->
+    <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">Ownership Calculator</h2>
-            <div class="calculator-widget">
-                <div class="calculator-inputs">
-                    <div class="input-group">
-                        <label for="down-payment">Down Payment ($)</label>
-                        <input type="number" id="down-payment" value="1500" min="0">
-                    </div>
-                    <div class="input-group">
-                        <label for="contract-length">Contract Length (months)</label>
-                        <input type="range" id="contract-length" min="3" max="6" value="6">
-                        <div class="range-labels">
-                            <span>3 mo</span>
-                            <span id="contract-value">6 mo</span>
-                        </div>
-                    </div>
-                    <div class="input-group">
-                        <label for="total-owed">Total Amount Owed</label>
-                        <select id="total-owed">
-                            <option value="2500">$2,500</option>
-                            <option value="3500" selected>$3,500</option>
-                            <option value="4500">$4,500</option>
-                        </select>
-                    </div>
-                    <div class="payment-toggle">
-                        <button class="active" data-frequency="weekly">Weekly</button>
-                        <button data-frequency="monthly">Monthly</button>
-                    </div>
-                </div>
-                <div class="calculator-results">
-                    <div class="result-item">
-                        <span class="label">Payment Amount</span>
-                        <span class="value" id="payment-amount">$583</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Total Payments</span>
-                        <span class="value" id="total-payments">6</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Early Buyout Price (25% off)</span>
-                        <span class="value" id="buyout-price">$2,625</span>
-                    </div>
-                </div>
-                <button class="btn-primary full-width">Apply These Terms</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="steps-container">
+            <h2 class="section-title">How STOCRX Works</h2>
+            <div class="steps-grid">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Pick your car</h3>
-                        <p>Browse our inventory and find your perfect match</p>
-                    </div>
+                    <h3>Choose Your Car</h3>
+                    <p>Browse our inventory of quality used cars (2011-2019) all under $10K</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Pay your down payment</h3>
-                        <p>Secure your vehicle with an initial payment of $1,500</p>
-                    </div>
+                    <h3>Pay $1,500 Down</h3>
+                    <p>Make your initial down payment and select your financing plan</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Upload license + selfie</h3>
-                        <p>Quick verification with our AI approval system</p>
-                    </div>
+                    <h3>Drive & Build Equity</h3>
+                    <p>Every payment builds equity toward full ownership</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Start driving the same week</h3>
-                        <p>Free local delivery to your doorstep</p>
-                    </div>
+                    <h3>Own Your Car</h3>
+                    <p>After 3-6 months, the car is 100% yours!</p>
                 </div>
-                <div class="step">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h3>Every payment builds ownership</h3>
-                        <p>Watch your equity grow with each payment</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">6</div>
-                    <div class="step-content">
-                        <h3>Option to swap or upgrade</h3>
-                        <p>Transfer your equity to a different vehicle anytime</p>
-                    </div>
-                </div>
+            </div>
+            <div class="cta-button">
+                <a href="how-it-works.html" class="btn-primary">Learn More</a>
             </div>
         </div>
     </section>
 
-    <section class="policy-highlights">
-        <div class="container">
-            <h2 class="section-title">Policy Highlights</h2>
-            <div class="policy-grid">
-                <div class="policy-item">
-                    <h3>Ownership Structure</h3>
-                    <p>No lump sum buyout required — ownership comes through subscription payments</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Contract Terms</h3>
-                    <p>Flexible contracts from 3-6 months</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Late Policy</h3>
-                    <p>Week 1-4 flat fees (editable per week)</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Early Buyout</h3>
-                    <p>25% discount on remaining balance (editable per car)</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Delivery</h3>
-                    <p>Free local delivery / paid long distance (added to payments)</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Termination</h3>
-                    <p>Free pick-up, must provide release & police report</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Insurance</h3>
-                    <p>Optional or mandatory (toggle per car)</p>
-                </div>
-                <div class="policy-item">
-                    <h3>Education</h3>
-                    <p>Multi-language education course available (with captions & transcripts)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="support" class="support">
-        <div class="container">
-            <h2 class="section-title">Support</h2>
-            <div class="support-options">
-                <div class="support-card">
-                    <div class="support-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/chatbot.png" alt="AI Chatbot">
-                    </div>
-                    <h3>AI Chatbot</h3>
-                    <p>24/7 instant support for common questions</p>
-                    <a href="#" class="btn-secondary">Chat Now</a>
-                </div>
-                <div class="support-card">
-                    <div class="support-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/email-open.png" alt="Email Support">
-                    </div>
-                    <h3>Email Support</h3>
-                    <p>Human support for complex inquiries</p>
-                    <a href="mailto:contact@stocrx.com" class="btn-secondary">Email Us</a>
-                </div>
-                <div class="support-card">
-                    <div class="support-icon">
-                        <img src="https://img.icons8.com/fluency/96/000000/language.png" alt="Multi-language Support">
-                    </div>
-                    <h3>Multi-language Help</h3>
-                    <p>Support in English, Spanish, and Arabic</p>
-                    <a href="#" class="btn-secondary">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <!-- Footer -->
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>STOCRX</h2>
+                <div class="footer-section">
+                    <h3>STOCRX</h3>
                     <p>Subscription to Own Car Rentals</p>
+                    <p>Drive today, own tomorrow.</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Navigation</h3>
-                        <ul>
-                            <li><a href="#browse">Browse Cars</a></li>
-                            <li><a href="#how-it-works">How It Works</a></li>
-                            <li><a href="#support">Support</a></li>
-                            <li><a href="#login">My Account</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
-                            <li><a href="#">Accessibility</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Contact</h3>
-                        <ul>
-                            <li><a href="mailto:contact@stocrx.com">contact@stocrx.com</a></li>
-                            <li><a href="tel:+18005551234">1-800-STOCRX</a></li>
-                            <li><a href="#">Find a Location</a></li>
-                            <li><a href="#">Careers</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-section">
+                    <h4>Cars</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="compare-cars.html">Compare Cars</a></li>
+                        <li><a href="car-finder.html">Car Finder</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Plans</h4>
+                    <ul>
+                        <li><a href="pricing.html">Pricing & Options</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="calculator.html">Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="chat.html">Live Chat</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: contact@stocrx.com</p>
+                    <p>Phone: 1-800-STOCRX</p>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 STOCRX. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><img src="https://img.icons8.com/fluency/48/000000/facebook-new.png" alt="Facebook"></a>
-                    <a href="#" aria-label="Twitter"><img src="https://img.icons8.com/fluency/48/000000/twitter.png" alt="Twitter"></a>
-                    <a href="#" aria-label="Instagram"><img src="https://img.icons8.com/fluency/48/000000/instagram-new.png" alt="Instagram"></a>
-                    <a href="#" aria-label="LinkedIn"><img src="https://img.icons8.com/fluency/48/000000/linkedin.png" alt="LinkedIn"></a>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
                 </div>
             </div>
         </div>
