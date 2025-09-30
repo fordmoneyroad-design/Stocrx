@@ -1,0 +1,26 @@
+# STOCRX Robots.txt
+# This file tells search engines which pages to crawl
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl all pages
+Allow: /index.html
+Allow: /browse-cars.html
+Allow: /compare-cars.html
+Allow: /car-finder.html
+Allow: /pricing.html
+Allow: /how-it-works.html
+Allow: /calculator.html
+Allow: /apply.html
+Allow: /faq.html
+Allow: /contact.html
+
+# Disallow admin pages (keep private)
+Disallow: /admin-dashboard.html
+Disallow: /login.html
+Disallow: /payment.html
+Disallow: /progress.html
+
+# Sitemap location
+Sitemap: https://sites.super.myninja.ai/efe324e8-6ce4-40d6-b140-138b1751df8b/837b05b6/sitemap.xml
