@@ -1,0 +1,9 @@
+stocrx/
+├── backend/          # Node.js + Express API
+├── frontend/         # React web app
+├── mobile/           # React Native app
+├── shared/           # Shared components, models, and utilities
+├── images/
+├── README.md
+├── .gitignore
+└── package.json
