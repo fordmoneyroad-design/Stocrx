@@ -374,4 +374,34 @@ if (typeof module !== 'undefined' && module.exports) {
         restrictPageAccess
     };
 }
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('ServiceWorker registration successful:', registration.scope);
+            })
+            .catch(err => {
+                console.log('ServiceWorker registration failed:', err);
+            });
+    });
+}
+
+// PWA Install Prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later
+    deferredPrompt = e;
+    // Show install button or banner (optional - you can add UI for this)
+    console.log('PWA install prompt available');
+});
+
+// Track PWA installation
+window.addEventListener('appinstalled', () => {
+    console.log('STOCRX PWA was installed');
+    deferredPrompt = null;
+});
 </script>
