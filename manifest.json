@@ -1,0 +1,32 @@
+{
+  "name": "STOCRX - Subscription to Own Car Rentals",
+  "short_name": "STOCRX",
+  "description": "Rent-to-own car platform. Build equity with every payment. No lump-sum buyout required.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#375FE2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicons/stocrx-favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicons/stocrx-favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "finance", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "favicons/stocrx-favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
