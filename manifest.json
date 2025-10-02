@@ -9,23 +9,33 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "favicons/stocrx-favicon-192x192.png",
+      "src": "favicons/stocrx-icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "favicons/stocrx-favicon-512x512.png",
+      "src": "favicons/stocrx-icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "categories": ["business", "finance", "lifestyle"],
   "screenshots": [
     {
-      "src": "favicons/stocrx-favicon-512x512.png",
-      "sizes": "512x512",
+      "src": "favicons/stocrx-icon-1024x1024.png",
+      "sizes": "1024x1024",
       "type": "image/png"
     }
   ]

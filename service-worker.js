@@ -5,8 +5,10 @@ const urlsToCache = [
   '/index.html',
   '/styles.css',
   '/script.js',
-  '/favicons/stocrx-favicon-192x192.png',
-  '/favicons/stocrx-favicon-512x512.png'
+  '/favicons/stocrx-icon-192x192.png',
+  '/favicons/stocrx-icon-512x512.png',
+  '/favicons/favicon.ico',
+  '/favicons/apple-touch-icon.png'
 ];
 
 // Install Service Worker
