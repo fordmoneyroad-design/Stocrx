@@ -4,7 +4,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://stocrx.com/</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
@@ -12,7 +12,7 @@
     <!-- Browse Cars -->
     <url>
         <loc>https://stocrx.com/browse-cars.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
@@ -20,7 +20,7 @@
     <!-- Compare Cars -->
     <url>
         <loc>https://stocrx.com/compare-cars.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -28,7 +28,7 @@
     <!-- Car Finder -->
     <url>
         <loc>https://stocrx.com/car-finder.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -36,7 +36,7 @@
     <!-- Pricing -->
     <url>
         <loc>https://stocrx.com/pricing.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -44,7 +44,7 @@
     <!-- How It Works -->
     <url>
         <loc>https://stocrx.com/how-it-works.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -52,7 +52,7 @@
     <!-- Calculator -->
     <url>
         <loc>https://stocrx.com/calculator.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -60,7 +60,7 @@
     <!-- Apply Now -->
     <url>
         <loc>https://stocrx.com/apply.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -68,7 +68,7 @@
     <!-- FAQs -->
     <url>
         <loc>https://stocrx.com/faq.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -76,7 +76,7 @@
     <!-- Contact -->
     <url>
         <loc>https://stocrx.com/contact.html</loc>
-        <lastmod>2025-01-30</lastmod>
+        <lastmod>2024-10-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

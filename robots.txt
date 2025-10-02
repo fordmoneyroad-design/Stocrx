@@ -1,10 +1,7 @@
-# STOCRX Robots.txt
-# This file tells search engines which pages to crawl
-
 User-agent: *
 Allow: /
 
-# Allow all search engines to crawl all pages
+# Allow all public pages
 Allow: /index.html
 Allow: /browse-cars.html
 Allow: /compare-cars.html
@@ -16,11 +13,15 @@ Allow: /apply.html
 Allow: /faq.html
 Allow: /contact.html
 
-# Disallow admin pages (keep private)
+# Block admin pages
 Disallow: /admin-dashboard.html
-Disallow: /login.html
-Disallow: /payment.html
-Disallow: /progress.html
+Disallow: /backend-notifications.js
+
+# Allow favicons and assets
+Allow: /favicons/
+Allow: /styles.css
+Allow: /script.js
+Allow: /manifest.json
 
 # Sitemap location
-Sitemap: https://sites.super.myninja.ai/efe324e8-6ce4-40d6-b140-138b1751df8b/837b05b6/sitemap.xml
+Sitemap: https://stocrx.com/sitemap.xml
