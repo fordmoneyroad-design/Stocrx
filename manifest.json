@@ -4,8 +4,8 @@
   "description": "Rent-to-own car platform. Build equity with every payment. No lump-sum buyout required.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#375FE2",
+  "background_color": "#6366f1",
+  "theme_color": "#6366f1",
   "orientation": "portrait-primary",
   "icons": [
     {
