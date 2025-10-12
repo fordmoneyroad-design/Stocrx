@@ -160,9 +160,8 @@
     </footer>
 
     <script src="script.js"></script>
-    <script type="module">
-        import { signIn, resetPassword } from './lib/auth.js';
-
+    <script>
+        // Login form functionality
         document.addEventListener('DOMContentLoaded', function() {
             const loginForm = document.getElementById('loginForm');
             const forgotPasswordLink = document.getElementById('forgotPasswordLink');
@@ -171,34 +170,28 @@
             const closeBtn = document.querySelector('.close');
             const cancelBtn = document.getElementById('cancelReset');
 
-            loginForm.addEventListener('submit', async function(e) {
+            // Login form submission
+            loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-
+                
                 const email = document.getElementById('loginEmail').value;
                 const password = document.getElementById('loginPassword').value;
-
-                if (!email || !password) {
-                    alert('Please enter both email and password.');
-                    return;
+                
+                // Here you would normally validate credentials with your server
+                // For demo purposes, we'll simulate a successful login
+                if (email && password) {
+                    // Store login status (in a real app, you'd use proper authentication)
+                    localStorage.setItem('stocrx_logged_in', 'true');
+                    localStorage.setItem('stocrx_user_email', email);
+                    
+                    alert('Login successful! Redirecting to your dashboard...');
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('Please enter both email/username and password.');
                 }
-
-                const submitBtn = loginForm.querySelector('button[type="submit"]');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Logging in...';
-
-                const { data, error } = await signIn(email, password);
-
-                if (error) {
-                    alert('Login failed: ' + error.message);
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Login';
-                    return;
-                }
-
-                alert('Login successful! Redirecting to your dashboard...');
-                window.location.href = 'dashboard.html';
             });
 
+            // Forgot password modal
             forgotPasswordLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 forgotPasswordModal.style.display = 'block';
@@ -218,34 +211,17 @@
                 }
             });
 
-            forgotPasswordForm.addEventListener('submit', async function(e) {
+            // Forgot password form submission
+            forgotPasswordForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-
+                
                 const resetEmail = document.getElementById('resetEmail').value;
-
-                if (!resetEmail) {
-                    alert('Please enter your email address.');
-                    return;
+                
+                if (resetEmail) {
+                    alert('Password reset link has been sent to ' + resetEmail);
+                    forgotPasswordModal.style.display = 'none';
+                    forgotPasswordForm.reset();
                 }
-
-                const submitBtn = forgotPasswordForm.querySelector('button[type="submit"]');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-
-                const { error } = await resetPassword(resetEmail);
-
-                if (error) {
-                    alert('Error: ' + error.message);
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Reset Link';
-                    return;
-                }
-
-                alert('Password reset link has been sent to ' + resetEmail);
-                forgotPasswordModal.style.display = 'none';
-                forgotPasswordForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Reset Link';
             });
         });
     </script>
