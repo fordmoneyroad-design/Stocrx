@@ -157,8 +157,7 @@
                     Subscribe to your dream car and build ownership with every payment.
                 </p>
                 <div class="hero-buttons">
-                    <a href="signup.html" class="btn btn-primary">Subscribe Now</a>
-                    <a href="signup.html" class="btn btn-secondary">Join For Free</a>
+                    <a href="browse-cars.html" class="btn btn-primary">Browse Cars</a>
                 </div>
             </div>
         </div>
@@ -168,7 +167,7 @@
     <section class="featured-vehicles">
         <div class="container">
             <h2 class="section-title">Featured Vehicles</h2>
-            <div class="cars-grid" id="cars-grid">
+            <div class="vehicles-grid" id="vehiclesGrid">
                 <!-- Vehicles will be loaded here by JavaScript -->
             </div>
         </div>
@@ -234,10 +233,152 @@
         </div>
     </footer>
 
-    <script type="module">
-        import { supabase } from './supabaseClient.js';
-        window.supabase = supabase;
-    </script>
     <script src="script.js"></script>
+    <script type="module">
+        import { getAllVehicles } from './lib/vehicles.js';
+
+        async function loadFeaturedVehicles() {
+            const grid = document.getElementById('vehiclesGrid');
+            if (!grid) return;
+
+            grid.innerHTML = '<p style="text-align: center; padding: 40px;">Loading vehicles...</p>';
+
+            const { data: vehicles, error } = await getAllVehicles('available');
+
+            if (error) {
+                grid.innerHTML = '<p style="text-align: center; color: var(--danger);">Error loading vehicles</p>';
+                return;
+            }
+
+            if (!vehicles || vehicles.length === 0) {
+                grid.innerHTML = '<p style="text-align: center;">No vehicles available at this time.</p>';
+                return;
+            }
+
+            grid.innerHTML = vehicles.slice(0, 6).map(vehicle => `
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="${vehicle.image_url}" alt="${vehicle.year} ${vehicle.make} ${vehicle.model}">
+                    </div>
+                    <div class="car-details">
+                        <h3>${vehicle.year} ${vehicle.make} ${vehicle.model}</h3>
+                        <div class="car-specs">
+                            <span><strong>Price:</strong> $${parseFloat(vehicle.price).toLocaleString()}</span>
+                            <span><strong>Mileage:</strong> ${vehicle.mileage.toLocaleString()} mi</span>
+                        </div>
+                        <div class="car-pricing">
+                            <div class="price-item">
+                                <span class="label">Down Payment</span>
+                                <span class="value">$${parseFloat(vehicle.down_payment).toLocaleString()}</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="label">Monthly</span>
+                                <span class="value">$${parseFloat(vehicle.monthly_payment)}/mo</span>
+                            </div>
+                        </div>
+                        <div class="car-actions">
+                            <a href="vehicle-details.html?id=${vehicle.id}" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        loadFeaturedVehicles();
+    </script>
+    <style>
+        .car-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+
+        .car-details {
+            padding: 1.5rem;
+        }
+
+        .car-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .car-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        .car-pricing {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--gray-100);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .price-item {
+            text-align: center;
+        }
+
+        .price-item .label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-medium);
+            margin-bottom: 0.3rem;
+        }
+
+        .price-item .value {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .car-actions {
+            text-align: center;
+        }
+
+        .car-actions .btn-primary {
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        .vehicles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+    </style>
 </body>
 </html>
