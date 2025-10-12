@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - STOCRX</title>
+    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dashboard-header h1 {
+            margin-bottom: 5px;
+        }
+
+        .dashboard-header .user-info {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .dashboard-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .dashboard-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .subscription-card {
+            background: var(--gray-100);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .subscription-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .subscription-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-medium);
+        }
+
+        .empty-state h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-medium);
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>STOCRX</h1>
+                    </a>
+                </div>
+
+                <nav class="desktop-nav">
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="browse-cars.html" class="nav-link">Browse Cars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="how-it-works.html" class="nav-link">How It Works</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">My Dashboard</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div>
+                <h1>Welcome to Your Dashboard</h1>
+                <div class="user-info" id="userInfo">Loading...</div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Active Subscriptions</h3>
+                <div class="stat-value" id="activeSubscriptions">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Equity Built</h3>
+                <div class="stat-value" id="equityBuilt">$0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Next Payment</h3>
+                <div class="stat-value" id="nextPayment">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Payment Status</h3>
+                <div class="stat-value" id="paymentStatus">-</div>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>My Subscriptions</h2>
+            <div id="subscriptionsContainer" class="loading">
+                Loading subscriptions...
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h2>Recent Payments</h2>
+            <div id="paymentsContainer" class="loading">
+                Loading payments...
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>STOCRX</h3>
+                    <p>Building car ownership, one payment at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 STOCRX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="module">
+        import { requireAuth, signOut } from './lib/auth.js';
+        import { supabase, getCurrentUser, getUserProfile } from './lib/supabase.js';
+
+        async function loadDashboard() {
+            const isAuth = await requireAuth();
+            if (!isAuth) return;
+
+            const user = await getCurrentUser();
+            if (!user) return;
+
+            const profile = await getUserProfile(user.id);
+
+            if (profile) {
+                document.getElementById('userInfo').textContent =
+                    `${profile.first_name} ${profile.last_name} (${user.email})`;
+            } else {
+                document.getElementById('userInfo').textContent = user.email;
+            }
+
+            await loadSubscriptions(user.id);
+            await loadPayments(user.id);
+        }
+
+        async function loadSubscriptions(userId) {
+            const container = document.getElementById('subscriptionsContainer');
+
+            const { data: subscriptions, error } = await supabase
+                .from('subscriptions')
+                .select(`
+                    *,
+                    vehicles (*)
+                `)
+                .eq('user_id', userId)
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                container.innerHTML = '<p>Error loading subscriptions</p>';
+                console.error('Error loading subscriptions:', error);
+                return;
+            }
+
+            if (!subscriptions || subscriptions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No Active Subscriptions</h3>
+                        <p>Start your journey to car ownership today!</p>
+                        <a href="browse-cars.html" class="btn">Browse Available Cars</a>
+                    </div>
+                `;
+                return;
+            }
+
+            document.getElementById('activeSubscriptions').textContent =
+                subscriptions.filter(s => s.status === 'active').length;
+
+            const totalEquity = subscriptions.reduce((sum, s) => sum + parseFloat(s.equity_built || 0), 0);
+            document.getElementById('equityBuilt').textContent =
+                `$${totalEquity.toLocaleString()}`;
+
+            container.innerHTML = subscriptions.map(sub => `
+                <div class="subscription-card">
+                    <h3>${sub.vehicles.year} ${sub.vehicles.make} ${sub.vehicles.model}</h3>
+                    <div class="subscription-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Status</span>
+                            <span class="detail-value">${sub.status}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Start Date</span>
+                            <span class="detail-value">${new Date(sub.start_date).toLocaleDateString()}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Equity Built</span>
+                            <span class="detail-value">$${parseFloat(sub.equity_built || 0).toLocaleString()}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Monthly Payment</span>
+                            <span class="detail-value">$${sub.vehicles.monthly_payment}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function loadPayments(userId) {
+            const container = document.getElementById('paymentsContainer');
+
+            const { data: payments, error } = await supabase
+                .from('payments')
+                .select(`
+                    *,
+                    subscriptions!inner (
+                        user_id,
+                        vehicles (make, model, year)
+                    )
+                `)
+                .eq('subscriptions.user_id', userId)
+                .order('payment_date', { ascending: false })
+                .limit(5);
+
+            if (error) {
+                container.innerHTML = '<p>Error loading payments</p>';
+                console.error('Error loading payments:', error);
+                return;
+            }
+
+            if (!payments || payments.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h3>No Payment History</h3>
+                        <p>Your payment history will appear here.</p>
+                    </div>
+                `;
+                document.getElementById('nextPayment').textContent = 'N/A';
+                document.getElementById('paymentStatus').textContent = 'N/A';
+                return;
+            }
+
+            const nextPayment = payments.find(p => p.status === 'pending');
+            if (nextPayment) {
+                document.getElementById('nextPayment').textContent =
+                    new Date(nextPayment.payment_date).toLocaleDateString();
+                document.getElementById('paymentStatus').textContent = 'Pending';
+            } else {
+                document.getElementById('nextPayment').textContent = 'Up to date';
+                document.getElementById('paymentStatus').textContent = 'Current';
+            }
+
+            container.innerHTML = `
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--gray-200); text-align: left;">
+                            <th style="padding: 12px;">Date</th>
+                            <th style="padding: 12px;">Vehicle</th>
+                            <th style="padding: 12px;">Amount</th>
+                            <th style="padding: 12px;">Type</th>
+                            <th style="padding: 12px;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${payments.map(payment => `
+                            <tr style="border-bottom: 1px solid var(--gray-200);">
+                                <td style="padding: 12px;">${new Date(payment.payment_date).toLocaleDateString()}</td>
+                                <td style="padding: 12px;">${payment.subscriptions.vehicles.year} ${payment.subscriptions.vehicles.make} ${payment.subscriptions.vehicles.model}</td>
+                                <td style="padding: 12px;">$${parseFloat(payment.amount).toLocaleString()}</td>
+                                <td style="padding: 12px;">${payment.payment_type}</td>
+                                <td style="padding: 12px;">
+                                    <span style="
+                                        padding: 4px 12px;
+                                        border-radius: 12px;
+                                        font-size: 0.85rem;
+                                        font-weight: 600;
+                                        background: ${payment.status === 'completed' ? 'var(--success)' : payment.status === 'pending' ? 'var(--warning)' : 'var(--danger)'};
+                                        color: white;
+                                    ">${payment.status}</span>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            const { error } = await signOut();
+            if (!error) {
+                window.location.href = 'index.html';
+            }
+        });
+
+        loadDashboard();
+    </script>
+</body>
+</html>

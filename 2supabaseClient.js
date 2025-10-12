@@ -1,1 +1,0 @@
-https://tnrxloldwmrlwslftepl.supabase.co
