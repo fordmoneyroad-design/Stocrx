@@ -1,20 +1,20 @@
 /* STOCRX Platform Styles - Updated with Dropdown Menu */
 
 :root {
-    --primary: #121214;
-    --primary-dark: #000000;
-    --secondary: #FF4458;
-    --text-dark: #121214;
-    --text-medium: #595959;
-    --text-light: #9DA3A6;
-    --background: #FFFFFF;
+    --primary: #375fe2;
+    --primary-dark: #2748B8;
+    --secondary: #53389E;
+    --text-dark: #1A202C;
+    --text-medium: #4A5568;
+    --text-light: #718096;
+    --background: #F7FAFC;
     --white: #FFFFFF;
-    --gray-100: #F5F5F5;
-    --gray-200: #E8E9E9;
-    --gray-300: #D3D4D5;
+    --gray-100: #EDF2F7;
+    --gray-200: #E2E8F0;
+    --gray-300: #CBD5E0;
     --success: #48BB78;
     --warning: #ECC94B;
-    --danger: #FF4458;
+    --danger: #F56565;
 }
 
 * {
@@ -397,11 +397,10 @@ body {
    HERO SECTION
 ======================================== */
 .hero {
-    background: var(--white);
-    color: var(--text-dark);
-    padding: 80px 0 60px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    padding: 100px 0 80px;
     text-align: center;
-    border-bottom: 1px solid var(--gray-200);
 }
 
 .hero-title {
@@ -409,13 +408,14 @@ body {
     font-weight: 800;
     margin-bottom: 1.5rem;
     line-height: 1.2;
-    color: var(--text-dark);
+    color: var(--white);
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: 2.5rem;
-    color: var(--text-medium);
+    color: var(--white);
+    opacity: 0.95;
 }
 
 .hero-buttons {
@@ -438,26 +438,25 @@ body {
 }
 
 .btn-primary {
-    background: var(--primary);
-    color: var(--white);
+    background: var(--white);
+    color: var(--primary);
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
-    background: var(--white);
-    color: var(--text-dark);
-    border: 2px solid var(--gray-300);
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
 }
 
 .btn-secondary:hover {
-    background: var(--gray-100);
-    border-color: var(--text-dark);
-    transform: translateY(-2px);
+    background: var(--white);
+    color: var(--primary);
+    transform: translateY(-3px);
 }
 
 .btn-large {
@@ -495,7 +494,7 @@ body {
 
 .featured-vehicles {
     padding: 80px 0;
-    background: var(--gray-100);
+    background: var(--white);
 }
 
 .section-title {
@@ -522,7 +521,7 @@ body {
 ======================================== */
 .how-it-works {
     padding: 80px 0;
-    background: var(--white);
+    background: var(--gray-100);
 }
 
 .steps-grid {
@@ -592,7 +591,7 @@ body {
 
 .footer-section h3, .footer-section h4 {
     margin-bottom: 1rem;
-    color: var(--white);
+    color: var(--primary);
 }
 
 .footer-section ul {
