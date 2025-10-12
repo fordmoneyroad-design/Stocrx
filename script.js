@@ -64,84 +64,38 @@ function showCarNotification() {
 window.addEventListener('load', showCarNotification);
 
 // ========================================
-// SAMPLE CAR DATA (5 vehicles)
+// LOAD FEATURED CARS FROM DATABASE
 // ========================================
-const vehicles = [
-    {
-        id: 1,
-        name: "2015 Honda Civic",
-        image: "https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500",
-        price: 7500,
-        downPayment: 1500,
-        monthly: 583,
-        mileage: 85000,
-        year: 2015,
-        make: "Honda",
-        model: "Civic"
-    },
-    {
-        id: 2,
-        name: "2014 Toyota Camry",
-        image: "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=500",
-        price: 8200,
-        downPayment: 1500,
-        monthly: 583,
-        mileage: 92000,
-        year: 2014,
-        make: "Toyota",
-        model: "Camry"
-    },
-    {
-        id: 3,
-        name: "2016 Nissan Altima",
-        image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=500",
-        price: 7800,
-        downPayment: 1500,
-        monthly: 583,
-        mileage: 78000,
-        year: 2016,
-        make: "Nissan",
-        model: "Altima"
-    },
-    {
-        id: 4,
-        name: "2014 Honda CR-V",
-        image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=500",
-        price: 8500,
-        downPayment: 1500,
-        monthly: 583,
-        mileage: 95000,
-        year: 2014,
-        make: "Honda",
-        model: "CR-V"
-    },
-    {
-        id: 5,
-        name: "2015 Ford Escape",
-        image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500",
-        price: 7800,
-        downPayment: 1500,
-        monthly: 583,
-        mileage: 102000,
-        year: 2015,
-        make: "Ford",
-        model: "Escape"
-    }
-];
-
-// ========================================
-// LOAD FEATURED CARS
-// ========================================
-function loadFeaturedCars() {
+async function loadFeaturedCars() {
     const carsGrid = document.getElementById('cars-grid');
     if (!carsGrid) return;
 
-    carsGrid.innerHTML = '';
+    carsGrid.innerHTML = '<div class="loading-spinner">Loading vehicles...</div>';
 
-    vehicles.forEach(vehicle => {
-        const carCard = createCarCard(vehicle);
-        carsGrid.appendChild(carCard);
-    });
+    try {
+        const { data: vehicles, error } = await window.supabase
+            .from('vehicles')
+            .select('*')
+            .eq('status', 'available')
+            .limit(5);
+
+        if (error) throw error;
+
+        carsGrid.innerHTML = '';
+
+        if (!vehicles || vehicles.length === 0) {
+            carsGrid.innerHTML = '<p style="text-align: center; padding: 2rem;">No vehicles available at this time.</p>';
+            return;
+        }
+
+        vehicles.forEach(vehicle => {
+            const carCard = createCarCard(vehicle);
+            carsGrid.appendChild(carCard);
+        });
+    } catch (error) {
+        console.error('Error loading vehicles:', error);
+        carsGrid.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--danger);">Failed to load vehicles. Please try again later.</p>';
+    }
 }
 
 function createCarCard(vehicle) {
