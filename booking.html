@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Vehicle - STOCRX</title>
+    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>STOCRX</h1>
+                    </a>
+                </div>
+                <nav class="desktop-nav">
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="browse-cars.html" class="nav-link">Browse Cars</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="how-it-works.html" class="nav-link">How It Works</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="careers.html" class="nav-link">Careers</a>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a href="#" class="nav-link">Account <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="signup.html">Sign Up</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="dashboard.html">My Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-dropdown">
+                            <a href="#" class="nav-link">Support <span class="dropdown-arrow">▼</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="faq.html">FAQs</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-progress">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Vehicle Details</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Payment Method</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Confirm & Pay</div>
+                    </div>
+                </div>
+
+                <div id="step1" class="booking-step active">
+                    <h2>Vehicle Information</h2>
+                    <div class="vehicle-summary" id="vehicleSummary">
+                        <div class="loading-spinner">Loading vehicle details...</div>
+                    </div>
+                    <div class="booking-options">
+                        <h3>Subscription Start Date</h3>
+                        <input type="date" id="startDate" class="form-input" min="">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="continueToPayment">Continue to Payment</button>
+                    </div>
+                </div>
+
+                <div id="step2" class="booking-step">
+                    <h2>Payment Method</h2>
+                    <div class="payment-methods">
+                        <div class="payment-option">
+                            <input type="radio" name="paymentMethod" id="card" value="card" checked>
+                            <label for="card">
+                                <span class="payment-icon">💳</span>
+                                <span>Credit/Debit Card</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="card-form">
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" class="form-input" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" class="form-input" placeholder="123" maxlength="3">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">Cardholder Name</label>
+                            <input type="text" id="cardName" class="form-input" placeholder="John Doe">
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" id="backToVehicle">Back</button>
+                        <button class="btn btn-primary" id="continueToConfirm">Continue to Confirm</button>
+                    </div>
+                </div>
+
+                <div id="step3" class="booking-step">
+                    <h2>Confirm & Pay</h2>
+                    <div class="payment-summary">
+                        <div class="summary-section">
+                            <h3>Vehicle Details</h3>
+                            <div id="confirmVehicle"></div>
+                        </div>
+                        <div class="summary-section">
+                            <h3>Payment Breakdown</h3>
+                            <div class="payment-breakdown">
+                                <div class="breakdown-row">
+                                    <span>Down Payment</span>
+                                    <span id="downPaymentAmount">$1,500.00</span>
+                                </div>
+                                <div class="breakdown-row">
+                                    <span>Monthly Payment</span>
+                                    <span id="monthlyPaymentAmount">$0.00</span>
+                                </div>
+                                <div class="breakdown-row total">
+                                    <span>Total Due Today</span>
+                                    <span id="totalDueAmount">$1,500.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <h3>Payment Method</h3>
+                            <div id="confirmPaymentMethod"></div>
+                        </div>
+                    </div>
+
+                    <div class="terms-agreement">
+                        <label>
+                            <input type="checkbox" id="agreeTerms" required>
+                            I agree to the <a href="terms.html" target="_blank">Terms & Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-secondary" id="backToPayment">Back</button>
+                        <button class="btn btn-primary" id="confirmPayment" disabled>Complete Payment</button>
+                    </div>
+
+                    <div id="paymentStatus" class="payment-status"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>STOCRX</h3>
+                    <p>Building car ownership, one payment at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: contact@stocrx.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 STOCRX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="booking.js"></script>
+</body>
+</html>
