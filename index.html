@@ -167,7 +167,7 @@
     <section class="featured-vehicles">
         <div class="container">
             <h2 class="section-title">Featured Vehicles</h2>
-            <div class="vehicles-grid" id="vehiclesGrid">
+            <div class="cars-grid" id="cars-grid">
                 <!-- Vehicles will be loaded here by JavaScript -->
             </div>
         </div>
@@ -233,6 +233,10 @@
         </div>
     </footer>
 
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+        window.supabase = supabase;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

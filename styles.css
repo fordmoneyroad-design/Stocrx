@@ -1,20 +1,20 @@
 /* STOCRX Platform Styles - Updated with Dropdown Menu */
 
 :root {
-    --primary: #375fe2;
-    --primary-dark: #2748B8;
-    --secondary: #53389E;
-    --text-dark: #1A202C;
-    --text-medium: #4A5568;
-    --text-light: #718096;
-    --background: #F7FAFC;
+    --primary: #121214;
+    --primary-dark: #000000;
+    --secondary: #FF4458;
+    --text-dark: #121214;
+    --text-medium: #595959;
+    --text-light: #9DA3A6;
+    --background: #FFFFFF;
     --white: #FFFFFF;
-    --gray-100: #EDF2F7;
-    --gray-200: #E2E8F0;
-    --gray-300: #CBD5E0;
+    --gray-100: #F5F5F5;
+    --gray-200: #E8E9E9;
+    --gray-300: #D3D4D5;
     --success: #48BB78;
     --warning: #ECC94B;
-    --danger: #F56565;
+    --danger: #FF4458;
 }
 
 * {
@@ -397,10 +397,11 @@ body {
    HERO SECTION
 ======================================== */
 .hero {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: var(--white);
-    padding: 100px 0 80px;
+    background: var(--white);
+    color: var(--text-dark);
+    padding: 80px 0 60px;
     text-align: center;
+    border-bottom: 1px solid var(--gray-200);
 }
 
 .hero-title {
@@ -408,12 +409,13 @@ body {
     font-weight: 800;
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    color: var(--text-dark);
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: 2.5rem;
-    opacity: 0.95;
+    color: var(--text-medium);
 }
 
 .hero-buttons {
@@ -436,24 +438,26 @@ body {
 }
 
 .btn-primary {
-    background: var(--white);
-    color: var(--primary);
+    background: var(--primary);
+    color: var(--white);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-secondary {
-    background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
+    background: var(--white);
+    color: var(--text-dark);
+    border: 2px solid var(--gray-300);
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--primary);
+    background: var(--gray-100);
+    border-color: var(--text-dark);
+    transform: translateY(-2px);
 }
 
 .btn-large {
@@ -489,6 +493,11 @@ body {
     background: var(--white);
 }
 
+.featured-vehicles {
+    padding: 80px 0;
+    background: var(--gray-100);
+}
+
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -513,7 +522,7 @@ body {
 ======================================== */
 .how-it-works {
     padding: 80px 0;
-    background: var(--gray-100);
+    background: var(--white);
 }
 
 .steps-grid {
@@ -583,7 +592,7 @@ body {
 
 .footer-section h3, .footer-section h4 {
     margin-bottom: 1rem;
-    color: var(--primary);
+    color: var(--white);
 }
 
 .footer-section ul {
@@ -1099,4 +1108,108 @@ body {
     .button-group .btn {
         width: 100%;
     }
+}
+
+/* ========================================
+   CAR CARD STYLES - TURO DESIGN
+======================================== */
+.car-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.car-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+}
+
+.car-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.car-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.car-card:hover .car-image img {
+    transform: scale(1.05);
+}
+
+.car-details {
+    padding: 20px;
+}
+
+.car-details h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.car-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.car-specs span {
+    color: var(--text-medium);
+}
+
+.car-specs strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.car-pricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+    background: var(--gray-100);
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.price-item {
+    text-align: center;
+}
+
+.price-item .label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-medium);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-item .value {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.car-actions {
+    text-align: center;
+}
+
+.car-actions .btn-primary {
+    width: 100%;
+    text-align: center;
+    padding: 12px 24px;
+    font-size: 1rem;
 }

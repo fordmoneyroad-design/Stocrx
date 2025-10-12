@@ -3,51 +3,47 @@
 // ========================================
 // MOBILE MENU FUNCTIONALITY
 // ========================================
-const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-const mobileNav = document.getElementById('mobile-nav');
-const mobileNavClose = document.getElementById('mobile-nav-close');
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
 
-// Open mobile menu
-mobileMenuToggle?.addEventListener('click', () => {
-    mobileNav.classList.add('active');
-    mobileMenuToggle.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
-});
+    // Open/Close mobile menu
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+    }
 
-// Close mobile menu
-mobileNavClose?.addEventListener('click', () => {
-    mobileNav.classList.remove('active');
-    mobileMenuToggle.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-});
+    // Mobile submenu toggles
+    const mobileNavToggles = document.querySelectorAll('.mobile-nav-toggle');
+    mobileNavToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const submenu = toggle.nextElementSibling;
+            const span = toggle.querySelector('span');
 
-// Mobile submenu toggles
-const mobileNavToggles = document.querySelectorAll('.mobile-nav-toggle');
-mobileNavToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-        const submenu = toggle.nextElementSibling;
-        const isActive = toggle.classList.contains('active');
-        
-        // Close all other submenus
-        document.querySelectorAll('.mobile-nav-toggle').forEach(t => {
-            if (t !== toggle) {
-                t.classList.remove('active');
-                t.nextElementSibling.classList.remove('active');
+            // Toggle current submenu
+            toggle.classList.toggle('active');
+            submenu.classList.toggle('active');
+
+            // Change + to -
+            if (toggle.classList.contains('active')) {
+                span.textContent = '-';
+            } else {
+                span.textContent = '+';
             }
         });
-        
-        // Toggle current submenu
-        toggle.classList.toggle('active');
-        submenu.classList.toggle('active');
     });
-});
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.mobile-submenu a').forEach(link => {
-    link.addEventListener('click', () => {
-        mobileNav.classList.remove('active');
-        mobileMenuToggle.classList.remove('active');
-        document.body.style.overflow = '';
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-nav a:not(.mobile-nav-toggle)').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
 });
 
@@ -151,28 +147,34 @@ function loadFeaturedCars() {
 function createCarCard(vehicle) {
     const card = document.createElement('div');
     card.className = 'car-card';
+
+    const downPayment = vehicle.down_payment || vehicle.downPayment || 1500;
+    const monthlyPayment = vehicle.monthly_payment || vehicle.monthly || 583;
+    const imageUrl = vehicle.image_url || vehicle.image || 'https://images.unsplash.com/photo-1590362891991-f776e747a588?w=500';
+    const vehicleName = vehicle.name || `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
+
     card.innerHTML = `
         <div class="car-image">
-            <img src="${vehicle.image}" alt="${vehicle.name}">
+            <img src="${imageUrl}" alt="${vehicleName}">
         </div>
         <div class="car-details">
-            <h3>${vehicle.name}</h3>
+            <h3>${vehicleName}</h3>
             <div class="car-specs">
-                <span><strong>Price:</strong> $${vehicle.price.toLocaleString()}</span>
-                <span><strong>Mileage:</strong> ${vehicle.mileage.toLocaleString()} mi</span>
+                <span><strong>Price:</strong> $${parseFloat(vehicle.price).toLocaleString()}</span>
+                <span><strong>Mileage:</strong> ${parseInt(vehicle.mileage).toLocaleString()} mi</span>
             </div>
             <div class="car-pricing">
                 <div class="price-item">
                     <span class="label">Down Payment</span>
-                    <span class="value">$${vehicle.downPayment.toLocaleString()}</span>
+                    <span class="value">$${parseFloat(downPayment).toLocaleString()}</span>
                 </div>
                 <div class="price-item">
                     <span class="label">Monthly</span>
-                    <span class="value">$${vehicle.monthly}/mo</span>
+                    <span class="value">$${parseFloat(monthlyPayment)}/mo</span>
                 </div>
             </div>
             <div class="car-actions">
-                <a href="car-details.html?id=${vehicle.id}" class="btn-primary">View Details</a>
+                <a href="booking.html?vehicleId=${vehicle.id}" class="btn-primary">Book Now</a>
             </div>
         </div>
     `;
@@ -308,21 +310,23 @@ languageSelect?.addEventListener('change', (e) => {
 // INITIALIZE ON PAGE LOAD
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    loadFeaturedCars();
-    
+    setTimeout(() => {
+        loadFeaturedCars();
+    }, 100);
+
     // Add scroll effect to header
     let lastScroll = 0;
     const header = document.querySelector('.main-header');
-    
+
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
-        
+
         if (currentScroll > 100) {
             header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
         } else {
             header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         }
-        
+
         lastScroll = currentScroll;
     });
 });
