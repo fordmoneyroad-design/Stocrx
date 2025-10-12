@@ -75,20 +75,175 @@
     <section class="job-openings">
         <div class="container">
             <h2 class="section-title">Current Openings</h2>
+            
+            <div class="jobs-grid">
+                <!-- Customer Service Representative -->
+                <div class="job-card">
+                    <h3>Customer Service Representative</h3>
+                    <div class="job-details">
+                        <span class="job-type">Full-time</span>
+                        <span class="job-location">Remote</span>
+                    </div>
+                    <p>Help customers navigate their subscription-to-own journey with exceptional support and guidance.</p>
+                    <ul class="job-requirements">
+                        <li>Excellent communication skills</li>
+                        <li>Customer service experience preferred</li>
+                        <li>Problem-solving mindset</li>
+                    </ul>
+                    <button class="btn btn-primary apply-btn" data-job="customer-service">Apply Now</button>
+                </div>
 
-            <div class="no-jobs-message">
-                <div class="no-jobs-content">
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    <h3>No Positions Available</h3>
-                    <p>We currently don't have any open positions, but we're always looking for talented individuals to join our team.</p>
-                    <p>Check back soon or send us your resume at <a href="mailto:careers@stocrx.com">careers@stocrx.com</a> for future opportunities.</p>
+                <!-- Vehicle Inspector -->
+                <div class="job-card">
+                    <h3>Vehicle Inspector</h3>
+                    <div class="job-details">
+                        <span class="job-type">Full-time</span>
+                        <span class="job-location">On-site</span>
+                    </div>
+                    <p>Ensure vehicle quality and safety through thorough inspections and maintenance oversight.</p>
+                    <ul class="job-requirements">
+                        <li>Automotive experience required</li>
+                        <li>ASE certification preferred</li>
+                        <li>Attention to detail</li>
+                    </ul>
+                    <button class="btn btn-primary apply-btn" data-job="vehicle-inspector">Apply Now</button>
+                </div>
+
+                <!-- Sales Associate -->
+                <div class="job-card">
+                    <h3>Sales Associate</h3>
+                    <div class="job-details">
+                        <span class="job-type">Full-time</span>
+                        <span class="job-location">Hybrid</span>
+                    </div>
+                    <p>Guide customers through our unique subscription-to-own process and help them find their perfect vehicle.</p>
+                    <ul class="job-requirements">
+                        <li>Sales experience preferred</li>
+                        <li>Automotive knowledge a plus</li>
+                        <li>Goal-oriented mindset</li>
+                    </ul>
+                    <button class="btn btn-primary apply-btn" data-job="sales-associate">Apply Now</button>
+                </div>
+
+                <!-- Operations Coordinator -->
+                <div class="job-card">
+                    <h3>Operations Coordinator</h3>
+                    <div class="job-details">
+                        <span class="job-type">Full-time</span>
+                        <span class="job-location">On-site</span>
+                    </div>
+                    <p>Coordinate vehicle logistics, customer onboarding, and ensure smooth operations across all locations.</p>
+                    <ul class="job-requirements">
+                        <li>Operations experience preferred</li>
+                        <li>Strong organizational skills</li>
+                        <li>Multi-tasking abilities</li>
+                    </ul>
+                    <button class="btn btn-primary apply-btn" data-job="operations-coordinator">Apply Now</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Job Application</h2>
+            <form id="jobApplicationForm" class="application-form">
+                <input type="hidden" id="jobPosition" name="position">
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Relevant Experience</label>
+                    <textarea id="experience" name="experience" rows="4" placeholder="Tell us about your relevant work experience..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="education">Education</label>
+                    <input type="text" id="education" name="education" placeholder="Highest level of education completed">
+                </div>
+
+                <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <select id="availability" name="availability">
+                        <option value="">Select availability</option>
+                        <option value="immediate">Immediate</option>
+                        <option value="2-weeks">2 weeks notice</option>
+                        <option value="1-month">1 month notice</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="salary">Expected Salary Range</label>
+                    <select id="salary" name="salary">
+                        <option value="">Select range</option>
+                        <option value="30k-40k">$30,000 - $40,000</option>
+                        <option value="40k-50k">$40,000 - $50,000</option>
+                        <option value="50k-60k">$50,000 - $60,000</option>
+                        <option value="60k+">$60,000+</option>
+                        <option value="negotiable">Negotiable</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="coverLetter">Cover Letter / Why STOCRX?</label>
+                    <textarea id="coverLetter" name="coverLetter" rows="5" placeholder="Tell us why you want to work at STOCRX and what you can bring to our team..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="resume">Resume/CV</label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+                    <small>Please upload your resume (PDF, DOC, or DOCX format)</small>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="backgroundCheck" name="backgroundCheck" required>
+                        I consent to a background check if offered a position *
+                    </label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="drugTest" name="drugTest" required>
+                        I consent to drug testing if required for the position *
+                    </label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="workAuthorization" name="workAuthorization" required>
+                        I am authorized to work in the United States *
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelApplication">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -127,5 +282,52 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Careers page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('applicationModal');
+            const applyBtns = document.querySelectorAll('.apply-btn');
+            const closeBtn = document.querySelector('.close');
+            const cancelBtn = document.getElementById('cancelApplication');
+            const form = document.getElementById('jobApplicationForm');
+
+            // Open modal when apply button is clicked
+            applyBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const jobTitle = this.getAttribute('data-job');
+                    document.getElementById('jobPosition').value = jobTitle;
+                    modal.style.display = 'block';
+                });
+            });
+
+            // Close modal
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            cancelBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Here you would normally send the form data to your server
+                alert('Thank you for your application! We will review it and get back to you within 5-7 business days.');
+                
+                // Reset form and close modal
+                form.reset();
+                modal.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
