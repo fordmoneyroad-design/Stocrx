@@ -258,14 +258,14 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Sign up form validation and submission
+    <script type="module">
+        import { signUp } from './lib/auth.js';
+
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('signupForm');
             const password = document.getElementById('password');
             const confirmPassword = document.getElementById('confirmPassword');
 
-            // Password validation
             function validatePassword() {
                 if (password.value !== confirmPassword.value) {
                     confirmPassword.setCustomValidity("Passwords don't match");
@@ -277,35 +277,57 @@
             password.addEventListener('change', validatePassword);
             confirmPassword.addEventListener('keyup', validatePassword);
 
-            // Form submission
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
-                // Validate age (must be 18+)
+
                 const birthDate = new Date(document.getElementById('dateOfBirth').value);
                 const today = new Date();
-                const age = today.getFullYear() - birthDate.getFullYear();
+                let age = today.getFullYear() - birthDate.getFullYear();
                 const monthDiff = today.getMonth() - birthDate.getMonth();
-                
+
                 if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
                     age--;
                 }
-                
+
                 if (age < 18) {
                     alert('You must be 18 or older to create an account.');
                     return;
                 }
 
-                // Validate password strength
                 if (password.value.length < 8) {
                     alert('Password must be at least 8 characters long.');
                     return;
                 }
 
-                // Here you would normally send the data to your server
-                alert('Account created successfully! Please check your email to verify your account.');
-                
-                // Redirect to login page
+                const submitBtn = form.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Creating Account...';
+
+                const userData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    phone: document.getElementById('phone').value,
+                    dateOfBirth: document.getElementById('dateOfBirth').value,
+                    address: document.getElementById('address').value,
+                    driversLicense: document.getElementById('driversLicense').value,
+                    licenseState: document.getElementById('licenseState').value,
+                    marketingEmails: document.getElementById('marketingEmails').checked
+                };
+
+                const { data, error } = await signUp(
+                    document.getElementById('email').value,
+                    password.value,
+                    userData
+                );
+
+                if (error) {
+                    alert('Signup failed: ' + error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Create Account';
+                    return;
+                }
+
+                alert('Account created successfully! You can now log in.');
                 window.location.href = 'login.html';
             });
         });

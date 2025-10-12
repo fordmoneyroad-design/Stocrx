@@ -326,7 +326,12 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { requireAdmin } from './lib/auth.js';
+        import { createVehicle, getAllVehicles, updateVehicle, deleteVehicle } from './lib/vehicles.js';
+
+        await requireAdmin();
+
         // Modal Functions
         function openAddCarModal() {
             document.getElementById('add-car-modal').classList.add('active');
@@ -336,23 +341,46 @@
             document.getElementById('add-car-modal').classList.remove('active');
         }
 
-        function addNewCar(event) {
+        async function addNewCar(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            const carData = Object.fromEntries(formData);
-            
-            console.log('New car data:', carData);
-            
-            // In production, send to backend API
-            // For now, just show success message
+            const carData = {
+                year: parseInt(formData.get('year')),
+                make: formData.get('make'),
+                model: formData.get('model'),
+                price: parseFloat(formData.get('price')),
+                mileage: parseInt(formData.get('mileage')),
+                image_url: formData.get('image'),
+                down_payment: parseFloat(formData.get('downPayment')),
+                monthly_payment: parseFloat(formData.get('monthly')),
+                status: 'available'
+            };
+
+            const { data, error } = await createVehicle(carData);
+
+            if (error) {
+                alert('Error adding car: ' + error.message);
+                return;
+            }
+
             showSuccess('Car added successfully!');
             closeAddCarModal();
             event.target.reset();
-            
-            // Update car count
+
             const totalCars = document.getElementById('total-cars');
             totalCars.textContent = parseInt(totalCars.textContent) + 1;
+
+            await loadStats();
         }
+
+        async function loadStats() {
+            const { data: vehicles } = await getAllVehicles();
+            if (vehicles) {
+                document.getElementById('total-cars').textContent = vehicles.length;
+            }
+        }
+
+        loadStats();
 
         function showSuccess(message) {
             const successMsg = document.getElementById('success-message');
