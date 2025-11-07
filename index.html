@@ -146,19 +146,117 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div id="car-notification" class="car-notification">
+                <div class="car-container">
+                    <div class="smoke-trail">
+                        <span class="smoke"></span>
+                        <span class="smoke"></span>
+                        <span class="smoke"></span>
+                    </div>
+                    <span class="notification-message">New ride unlocked • 2021 Camaro LT</span>
+                    <span class="car">🚗💨</span>
+                </div>
+            </div>
+        </div>
+        <div class="container hero-grid">
+            <div class="hero-copy">
+                <span class="hero-eyebrow">Subscription To Own • S2O</span>
                 <h1 class="hero-title">
-                    Drive Today.<br>
-                    Pay As You Go.<br>
-                    Own It Your Way.
+                    Drive today.<br>
+                    Level up every payment.<br>
+                    Own the vibe.
                 </h1>
                 <p class="hero-subtitle">
-                    Subscribe to your dream car and build ownership with every payment.
+                    STOCRX gets you rolling in under 48 hours with monthly payments that stack into ownership.
+                    No balloon buyout, no dealership drama—just keys, concierge support, and equity from day one.
                 </p>
-                <div class="hero-buttons">
-                    <a href="signup.html" class="btn btn-primary">Subscribe Now</a>
-                    <a href="signup.html" class="btn btn-secondary">Join For Free</a>
+                <div class="hero-actions">
+                    <a href="signup.html" class="btn btn-primary">Start Your Journey</a>
+                    <a href="browse-cars.html" class="btn btn-ghost">Browse Live Inventory</a>
+                </div>
+                <div class="hero-badges">
+                    <div class="badge">
+                        <span class="badge-icon">⚡</span>
+                        <span>48-hour approval powered by STOCRX concierge</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">💳</span>
+                        <span>Equity accrues automatically every month</span>
+                    </div>
+                    <div class="badge">
+                        <span class="badge-icon">🛠️</span>
+                        <span>Maintenance &amp; insurance bundles available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-media">
+                <div class="hero-showcase">
+                    <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Performance car illuminated by neon lights">
+                    <div class="media-glow"></div>
+                    <div class="hero-stat-card primary">
+                        <span class="label">Average Equity Gained</span>
+                        <span class="value">$3.2K</span>
+                        <span class="meta">in the first 9 months</span>
+                    </div>
+                    <div class="hero-stat-card secondary">
+                        <span class="label">On the road</span>
+                        <span class="value">312</span>
+                        <span class="meta">members driving STOCRX today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-stats">
+            <div class="container">
+                <ul>
+                    <li>
+                        <span class="stat-value">48 hrs</span>
+                        <span class="stat-label">From apply to keys</span>
+                    </li>
+                    <li>
+                        <span class="stat-value">$1.5K</span>
+                        <span class="stat-label">Starter down payment</span>
+                    </li>
+                    <li>
+                        <span class="stat-value">0%</span>
+                        <span class="stat-label">Penalty for early buyout</span>
+                    </li>
+                    <li>
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Driver concierge</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to feel the vibe</span>
+            <div class="scroll-dot"></div>
+        </div>
+    </section>
+
+    <!-- Momentum Strip -->
+    <section class="momentum-strip">
+        <div class="container">
+            <div class="momentum-grid">
+                <div class="momentum-item">
+                    <span class="item-icon">🎯</span>
+                    <h3>Pick Your Style</h3>
+                    <p>Curated coupes, SUVs, and eco-rides under $10K ready for subscription-to-own.</p>
+                </div>
+                <div class="momentum-item">
+                    <span class="item-icon">🪄</span>
+                    <h3>Concierge Onboarding</h3>
+                    <p>Digital paperwork, soft credit pulls, and real humans to guide every step.</p>
+                </div>
+                <div class="momentum-item">
+                    <span class="item-icon">🚀</span>
+                    <h3>Own While You Drive</h3>
+                    <p>Monthly payments stack equity so you can own without the end-of-term surprise.</p>
                 </div>
             </div>
         </div>
@@ -167,9 +265,62 @@
     <!-- Featured Vehicles Section -->
     <section class="featured-vehicles">
         <div class="container">
-            <h2 class="section-title">Featured Vehicles</h2>
+            <div class="section-intro">
+                <span class="section-eyebrow">Live Inventory</span>
+                <h2 class="section-title">Featured Vehicles</h2>
+                <p class="section-subtitle">
+                    Updated nightly with the latest STOCRX-ready rides. Subscribe today and build equity from mile one.
+                </p>
+                <div class="section-actions">
+                    <a href="browse-cars.html" class="link-arrow">See full garage</a>
+                    <span class="inventory-tag">New drops every Friday</span>
+                </div>
+            </div>
             <div class="cars-grid" id="cars-grid">
                 <!-- Vehicles will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Benefits -->
+    <section class="membership-benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefits-copy">
+                    <span class="section-eyebrow">More Than A Rental</span>
+                    <h2>Make every payment count toward your ownership moment.</h2>
+                    <p>
+                        STOCRX bundles financing, maintenance, and equity tracking into one frictionless membership.
+                        Your concierge keeps tabs on service dates, refinance options, and upgrade windows so you can stay focused on the drive.
+                    </p>
+                    <ul class="benefits-list">
+                        <li><span>✔</span> Real-time equity dashboard inside your driver app</li>
+                        <li><span>✔</span> Predictable pricing with maintenance + insurance bundles</li>
+                        <li><span>✔</span> Swap-ready program for lifestyle or family shifts</li>
+                    </ul>
+                </div>
+                <div class="benefits-card">
+                    <h3>Membership Snapshot</h3>
+                    <ul>
+                        <li>
+                            <span class="benefit-label">Average monthly</span>
+                            <span class="benefit-value">$583</span>
+                        </li>
+                        <li>
+                            <span class="benefit-label">Equity back by Month 12</span>
+                            <span class="benefit-value">$4,860</span>
+                        </li>
+                        <li>
+                            <span class="benefit-label">Maintenance coverage</span>
+                            <span class="benefit-value">Included</span>
+                        </li>
+                        <li>
+                            <span class="benefit-label">Early ownership bonus</span>
+                            <span class="benefit-value">1 free payment</span>
+                        </li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary">Claim Your Spot</a>
+                </div>
             </div>
         </div>
     </section>
@@ -177,23 +328,50 @@
     <!-- How It Works Section -->
     <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">How It Works</h2>
+            <div class="section-intro">
+                <span class="section-eyebrow">No Surprises</span>
+                <h2 class="section-title">How STOCRX Works</h2>
+                <p class="section-subtitle">
+                    Three simple stages between you and ownership. Our concierge team keeps each handoff smooth.
+                </p>
+            </div>
             <div class="steps-grid">
                 <div class="step">
                     <div class="step-number">1</div>
                     <h3>Choose Your Car</h3>
-                    <p>Browse our inventory of quality used vehicles under $10K</p>
+                    <p>Browse our inventory of quality used vehicles under $10K and lock your fit with $1,500 down.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Subscribe & Drive</h3>
-                    <p>Start with just $1,500 down and begin building ownership</p>
+                    <h3>Subscribe &amp; Drive</h3>
+                    <p>Monthly payments cover the vehicle plus available insurance and maintenance bundles.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <h3>Own Your Way</h3>
-                    <p>Every payment builds equity - no lump-sum buyout required</p>
+                    <p>Every payment builds equity—no lump-sum buyout required and early ownership rewarded.</p>
                 </div>
+            </div>
+            <div class="journey-card">
+                <div>
+                    <h3>Concierge at every milestone</h3>
+                    <p>From day-one onboarding to your ownership celebration, the STOCRX crew handles paperwork, service visits, and upgrade opportunities.</p>
+                </div>
+                <a href="how-it-works.html" class="link-arrow">See the full journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Banner -->
+    <section class="membership-banner">
+        <div class="container banner-content">
+            <h2>Ready to turn every payment into progress?</h2>
+            <p>
+                Tap subscribe and our concierge will craft your path to ownership—including insurance, maintenance, and upgrade options tailored to your drive.
+            </p>
+            <div class="banner-actions">
+                <a href="signup.html" class="btn btn-primary">Join STOCRX</a>
+                <a href="contact.html" class="btn btn-ghost">Talk To A Specialist</a>
             </div>
         </div>
     </section>
