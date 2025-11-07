@@ -73,13 +73,7 @@ async function loadFeaturedCars() {
     carsGrid.innerHTML = '<div class="loading-spinner">Loading vehicles...</div>';
 
     try {
-        const { data: vehicles, error } = await window.supabase
-            .from('vehicles')
-            .select('*')
-            .eq('status', 'available')
-            .limit(5);
-
-        if (error) throw error;
+        const vehicles = await getLocalInventory();
 
         carsGrid.innerHTML = '';
 
@@ -263,6 +257,63 @@ const carCardStyles = `
 }
 </style>
 `;
+
+// Local inventory fallback (edit these items or replace with a JSON fetch)
+const localVehicleInventory = [
+    {
+        id: 'tesla-model-3',
+        name: '2021 Tesla Model 3 Standard Plus',
+        price: 32990,
+        mileage: 24150,
+        down_payment: 1800,
+        monthly_payment: 629,
+        image_url: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+        id: 'bmw-3-series',
+        name: '2019 BMW 330i xDrive',
+        price: 25980,
+        mileage: 35200,
+        down_payment: 1500,
+        monthly_payment: 589,
+        image_url: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+        id: 'kia-soul',
+        name: '2020 Kia Soul EV',
+        price: 19450,
+        mileage: 28850,
+        down_payment: 1200,
+        monthly_payment: 499,
+        image_url: 'https://images.unsplash.com/photo-1593941707874-ef25b8b3a8de?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+        id: 'ford-escape',
+        name: '2018 Ford Escape Titanium',
+        price: 17290,
+        mileage: 42110,
+        down_payment: 1100,
+        monthly_payment: 455,
+        image_url: 'https://images.unsplash.com/photo-1549921296-3ecf9c1cfcaf?auto=format&fit=crop&w=1200&q=80'
+    }
+];
+
+async function getLocalInventory() {
+    if (window.fetch) {
+        try {
+            const response = await fetch('./data/featured-vehicles.json', { cache: 'no-store' });
+            if (response.ok) {
+                const data = await response.json();
+                if (Array.isArray(data) && data.length) {
+                    return data;
+                }
+            }
+        } catch (error) {
+            console.warn('Falling back to inline vehicle inventory:', error);
+        }
+    }
+    return localVehicleInventory;
+}
 
 // Inject car card styles
 if (!document.getElementById('car-card-styles')) {
