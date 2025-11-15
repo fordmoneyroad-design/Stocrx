@@ -55,7 +55,7 @@ function showCarNotification() {
     if (notification) {
         // Show notification after 3 seconds
         setTimeout(() => {
-            notification.style.animation = 'driveAcross 8s ease-in-out forwards';
+            notification.style.animation = 'driveAcross 10s ease-in-out infinite';
         }, 3000);
     }
 }
@@ -73,13 +73,7 @@ async function loadFeaturedCars() {
     carsGrid.innerHTML = '<div class="loading-spinner">Loading vehicles...</div>';
 
     try {
-        const { data: vehicles, error } = await window.supabase
-            .from('vehicles')
-            .select('*')
-            .eq('status', 'available')
-            .limit(5);
-
-        if (error) throw error;
+        const vehicles = await getLocalInventory();
 
         carsGrid.innerHTML = '';
 
@@ -139,21 +133,40 @@ function createCarCard(vehicle) {
 const carCardStyles = `
 <style>
 .car-card {
-    background: var(--white);
-    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(239, 243, 255, 0.95) 100%);
+    border: 1px solid rgba(85, 101, 255, 0.12);
+    box-shadow: 0 20px 45px rgba(13, 27, 51, 0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.car-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(85, 101, 255, 0.1) 0%, rgba(0, 216, 255, 0.08) 100%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
 }
 
 .car-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-12px);
+    box-shadow: 0 32px 60px rgba(13, 27, 51, 0.14);
+}
+
+.car-card:hover::after {
+    opacity: 1;
 }
 
 .car-image {
     width: 100%;
-    height: 220px;
+    height: 230px;
+    position: relative;
     overflow: hidden;
 }
 
@@ -161,69 +174,146 @@ const carCardStyles = `
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .car-card:hover .car-image img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .car-details {
-    padding: 1.5rem;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
 }
 
 .car-details h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--text-dark);
+    margin: 0;
 }
 
 .car-specs {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    display: grid;
+    gap: 0.45rem;
+    font-size: 0.92rem;
     color: var(--text-medium);
-    font-size: 0.9rem;
+}
+
+.car-specs strong {
+    color: var(--text-dark);
 }
 
 .car-pricing {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
     padding: 1rem;
-    background: var(--gray-100);
-    border-radius: 8px;
-    margin-bottom: 1rem;
+    background: rgba(85, 101, 255, 0.08);
+    border-radius: 14px;
+    border: 1px solid rgba(85, 101, 255, 0.15);
 }
 
 .price-item {
     text-align: center;
+    color: var(--text-dark);
 }
 
 .price-item .label {
     display: block;
-    font-size: 0.8rem;
-    color: var(--text-medium);
-    margin-bottom: 0.3rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    margin-bottom: 0.4rem;
 }
 
 .price-item .value {
     display: block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--primary-dark);
 }
 
 .car-actions {
-    text-align: center;
+    margin-top: auto;
 }
 
 .car-actions .btn-primary {
     width: 100%;
-    text-align: center;
+    border-radius: 14px;
+}
+
+@media (max-width: 480px) {
+    .car-card {
+        border-radius: 18px;
+    }
+
+    .car-details {
+        padding: 1.5rem;
+    }
 }
 </style>
 `;
+
+// Local inventory fallback (edit these items or replace with a JSON fetch)
+const localVehicleInventory = [
+    {
+        id: 'tesla-model-3',
+        name: '2021 Tesla Model 3 Standard Plus',
+        price: 32990,
+        mileage: 24150,
+        down_payment: 1800,
+        monthly_payment: 629,
+        image_url: 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+        id: 'bmw-3-series',
+        name: '2019 BMW 330i xDrive',
+        price: 25980,
+        mileage: 35200,
+        down_payment: 1500,
+        monthly_payment: 589,
+        image_url: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+        id: 'kia-soul',
+        name: '2020 Kia Soul EV',
+        price: 19450,
+        mileage: 28850,
+        down_payment: 1200,
+        monthly_payment: 499,
+        image_url: 'https://images.unsplash.com/photo-1593941707874-ef25b8b3a8de?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+        id: 'ford-escape',
+        name: '2018 Ford Escape Titanium',
+        price: 17290,
+        mileage: 42110,
+        down_payment: 1100,
+        monthly_payment: 455,
+        image_url: 'https://images.unsplash.com/photo-1549921296-3ecf9c1cfcaf?auto=format&fit=crop&w=1200&q=80'
+    }
+];
+
+async function getLocalInventory() {
+    if (window.fetch) {
+        try {
+            const response = await fetch('./data/featured-vehicles.json', { cache: 'no-store' });
+            if (response.ok) {
+                const data = await response.json();
+                if (Array.isArray(data) && data.length) {
+                    return data;
+                }
+            }
+        } catch (error) {
+            console.warn('Falling back to inline vehicle inventory:', error);
+        }
+    }
+    return localVehicleInventory;
+}
 
 // Inject car card styles
 if (!document.getElementById('car-card-styles')) {
@@ -362,4 +452,3 @@ window.addEventListener('appinstalled', () => {
     console.log('STOCRX PWA was installed');
     deferredPrompt = null;
 });
-</script>
